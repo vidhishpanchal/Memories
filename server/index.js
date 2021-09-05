@@ -7,6 +7,7 @@ import mongoose from "mongoose"
 // const cors = require('cors');
 import cors from "cors"
 import postRoutes from './routes/posts.js';
+import userRoutes from './routes/user.js';
 
 const app = express();
 
@@ -15,6 +16,7 @@ app.use(bodyParser.urlencoded({ limit: '30mb', extended: true }))
 app.use(cors());
 
 app.use('/posts', postRoutes);
+app.use('/user', userRoutes);
 
 const CONNECTION_URL = process.env.CONNECTION_URL;
 // const CONNECTION_URL = 'mongodb+srv://Vidhish:memories123@cluster0.oh3m5.mongodb.net/Memories?retryWrites=true&w=majority'

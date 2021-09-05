@@ -7,24 +7,32 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Icon from './icon';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import {signin, signup} from "../../actions/auth"
 const Auth = () => {
     // const state = null;
     const initialState = { firstName: '', lastName: '', email: '', password: '', confirmPassword: '' };
-    const [form, setForm] = useState(initialState);
+    const [formData, setFormData] = useState(initialState);
     const classes = useStyles()
     const history = useHistory()
     const [isSignup, setIsSignup] = useState(false);
     const [showPassword, setShowPassword] = useState(false)
     const dispatch = useDispatch()
     const handleShowPassword = () => setShowPassword(!showPassword);
-    const handleSubmit = ()=>{
-
+    const handleSubmit = (e)=>{
+      e.preventDefault()
+      if (isSignup) {
+        dispatch(signup(formData, history))
+      } else {
+        dispatch(signin(formData, history))
+      }
+      console.log(formData);
     }
-    const handleChange = ()=>{
-
+    const handleChange = (e)=>{
+      setFormData({...formData, [e.target.name]: e.target.value})
+      
     }
     const switchMode = ()=>{
-        setForm(initialState);
+        setFormData(initialState);
         setIsSignup((prevIsSignup) => !prevIsSignup);
         setShowPassword(false);
     }
