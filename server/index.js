@@ -19,7 +19,6 @@ app.use('/posts', postRoutes);
 app.use('/user', userRoutes);
 
 const CONNECTION_URL = process.env.CONNECTION_URL;
-// const CONNECTION_URL = 'mongodb+srv://Vidhish:memories123@cluster0.oh3m5.mongodb.net/Memories?retryWrites=true&w=majority'
 const PORT = process.env.PORT|| 5000;
 
 mongoose.connect(CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true })
